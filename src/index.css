@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  body {
+    @apply bg-dark text-white;
+  }
+}
+
+.hamburgur.open span{
+    transform-origin: left center;
+}
+
+.hamburgur.open span:nth-child(1) {
+    transform: rotate(45deg) translate(-5px, 1.5px);
+}
+
+.hamburgur.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburgur.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(-5px, 0px);
+}
+
+
+
+
+
+.hamburger.close {
+}
