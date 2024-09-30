@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Profile from "../assets/profile.png";
 import Hamburgur from "./Hamburgur";
 import { IoSearchOutline } from "react-icons/io5";
@@ -11,6 +11,7 @@ import {
 import { cn } from "../utils/cn";
 import { FaArrowLeft } from "react-icons/fa6";
 import { nanoid } from "nanoid";
+import Currency from "./Currency";
 
 const Header = () => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
@@ -31,6 +32,7 @@ const Header = () => {
       setHidden(false);
     }
   });
+
   return (
     <motion.header
       variants={{
@@ -76,9 +78,7 @@ const Header = () => {
                 key={nanoid()}
                 className="border-2 inline-flex items-center gap-4  text-red-600 my-1 rounded-2xl px-1 border-red-600"
               >
-                <div className="font-extrabold rounded-full inline-flex justify-center items-center w-5 h-5 border-red-600 border-2 text-sm italic font-sans">
-                  F
-                </div>
+                <Currency />
                 <span className="font-extrabold text-sm">50</span>
               </motion.div>
             </motion.div>
