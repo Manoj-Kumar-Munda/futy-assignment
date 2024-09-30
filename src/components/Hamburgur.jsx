@@ -5,14 +5,10 @@ import { AnimatePresence, motion } from "framer-motion";
 const Hamburgur = ({ isSearchBarOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <AnimatePresence>
+    <>
       {!isSearchBarOpen && (
         <>
           <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
             className={cn("w-12 h-12 relative focus:outline-none rounded-full")}
             onClick={() => setIsOpen((prev) => !prev)}
           >
@@ -45,7 +41,7 @@ const Hamburgur = ({ isSearchBarOpen }) => {
           </motion.button>
         </>
       )}
-    </AnimatePresence>
+    </>
   );
 };
 

@@ -49,63 +49,57 @@ const Header = () => {
       )}
     >
       <div className="max-w-screen-xl mx-auto relative py-2 px-2 h-14 flex justify-between items-center">
-        <AnimatePresence>
-          {!isSearchBarOpen && (
+        {!isSearchBarOpen && (
+          <motion.div className="inline-flex justify-start gap-2">
             <motion.div
-              animate={hidden ? { opacity: 0 } : { opacity: 1 }}
-              className="inline-flex justify-start gap-2"
+              className="bg-white rounded-full w-10 h-10 p-1.5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={!isSearchBarOpen ? { delay: 0 } : { delay: 0.75 }}
+              key={nanoid()}
             >
-              <motion.div
-                className="bg-white rounded-full w-10 h-10 p-1.5"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: 0.75 }}
-                key={nanoid()}
-              >
-                <img
-                  src={Profile}
-                  alt="profile"
-                  className="w-full h-full object-cover"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ delay: 0.75 }}
-                key={nanoid()}
-                className="border-2 inline-flex items-center gap-4  text-red-600 my-1 rounded-2xl px-1 border-red-600"
-              >
-                <Currency />
-                <span className="font-extrabold text-sm">50</span>
-              </motion.div>
+              <img
+                src={Profile}
+                alt="profile"
+                className="w-full h-full object-cover"
+              />
             </motion.div>
-          )}
-        </AnimatePresence>
+
+            <motion.div
+              initial={hidden ? {} : { opacity: 0 }}
+              animate={hidden ? { opacity: 0 } : { opacity: 1 }}
+              exit={hidden ? {} : { opacity: 0 }}
+              transition={!isSearchBarOpen ? { delay: 0 } : { delay: 0.75 }}
+              key={nanoid()}
+              className="border-2 inline-flex items-center gap-4  text-red-600 my-1 rounded-2xl px-1 border-red-600"
+            >
+              <Currency />
+              <span className="font-extrabold text-sm">50</span>
+            </motion.div>
+          </motion.div>
+        )}
 
         <div className="flex items-center gap-2">
+          {/* searchbar for >sm device */}
           <div
             className={cn(
-              "transition-all delay-200 duration-300 rounded-full flex justify-center items-center gap-1 absolute right-14 left-2",
+              "flex sm:hidden transition-all  rounded-full justify-center items-center gap-1 absolute right-14 left-2",
               isSearchBarOpen && "right-2 left-2 border-white/10"
             )}
           >
-            <AnimatePresence>
-              {isSearchBarOpen && (
-                <motion.button
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  key={nanoid()}
-                  className="relative"
-                  onClick={() => setIsSearchBarOpen(false)}
-                >
-                  <FaArrowLeft />
-                </motion.button>
-              )}
-            </AnimatePresence>
+            {isSearchBarOpen && (
+              <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                key={nanoid()}
+                className="relative"
+                onClick={() => setIsSearchBarOpen(false)}
+              >
+                <FaArrowLeft />
+              </motion.button>
+            )}
 
             <motion.div
               style={{ transformOrigin: "right" }}
@@ -115,7 +109,7 @@ const Header = () => {
                   ? { opacity: 1, scaleX: 1 }
                   : { opacity: 0, scaleX: 0 }
               }
-              transition={{ delay: 0.5, type: "tween", duration: 0.35 }}
+              transition={{ delay: 0, type: "tween", duration: 0.3 }}
               className="bg-white rounded-full overflow-hidden w-full pl-4 pr-2 flex"
             >
               <input
