@@ -2,11 +2,11 @@ export function formatDate(dateString) {
   const date = new Date(dateString);
 
   // Using Intl.DateTimeFormat for formatting the date
-  const formattedDate = new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
+  const formattedDate = date.toLocaleDateString("en-GB", {
+    day: "2-digit",
     month: "short",
     year: "numeric",
-  }).format(date);
+  });
 
   return formattedDate;
 }
