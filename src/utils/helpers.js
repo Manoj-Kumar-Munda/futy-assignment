@@ -1,7 +1,7 @@
+import data from "../../data/data.json";
+
 export function formatDate(dateString) {
   const date = new Date(dateString);
-
-  // Using Intl.DateTimeFormat for formatting the date
   const formattedDate = date.toLocaleDateString("en-GB", {
     day: "2-digit",
     month: "short",
@@ -21,4 +21,25 @@ export function formateTime(date) {
     minutes += "0";
   }
   return hour + ":" + minutes;
+}
+
+export function findMatchesByTeam(teamName) {
+  const matchesForTeam = [];
+  data?.matches?.forEach((matchDay) => {
+    matchDay?.games?.forEach((game) => {
+      if (
+        game.team1.toLowerCase().includes(teamName?.toLowerCase()) ||
+        game.team2.toLowerCase().includes(teamName?.toLowerCase())
+      ) {
+        matchesForTeam.push({
+          date: matchDay.date,
+          team1: game.team1,
+          team2: game.team2,
+          time: game.time,
+        });
+      }
+    });
+  });
+
+  return matchesForTeam;
 }

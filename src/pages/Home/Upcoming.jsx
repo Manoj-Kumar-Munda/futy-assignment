@@ -1,28 +1,34 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import data from "../../../data/data.json";
-import Currency from "../../components/Currency";
-import { formatDate, formateTime } from "../../utils/helpers";
-import Team from "../../components/Team";
+import matches from "../../../data/data.json";
+import {
+  findMatchesByTeam,
+  formatDate,
+} from "../../utils/helpers";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { nanoid } from "nanoid";
+import { useSearchParams } from "react-router-dom";
+import MatchCard from "../../components/MatchCard";
 
 const Upcoming = () => {
   const [currentElement, setCurrentElement] = useState(null);
+  const [data, setData] = useState(matches);
   const { scrollY } = useScroll();
   const [showDate, setShowDate] = useState(false);
   const elementsRef = useRef([]);
+
+
+
 
   const handleShowDateWithDebouncing = () => {
     let timer;
     return () => {
       clearTimeout(timer);
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setShowDate(false);
       }, 1500);
     };
   };
 
-  let timer;
   const handleScroll = useCallback(() => {
     if (scrollY.current > 0) {
       setShowDate(true);
@@ -69,38 +75,10 @@ const Upcoming = () => {
             </span>
           </div>
 
-
           <div className="flex gap-2 flex-wrap justify-center">
-
-          {match?.games?.map((game) => (
-            <div
-              key={nanoid()}
-              className="relative my-5 flex flex-col gap-2  border-t-4 rounded-lg"
-            >
-              <div className="absolute bg-white -top-3 left-1/2 -translate-x-1/2 rounded-xl">
-                <div className="inline-flex gap-2 items-center px-2">
-                  <Currency className={"text-black border-black"} />
-                  <span className="text-black font-bold text-sm">2100</span>
-                </div>
-              </div>
-              <div className="flex gap-2 sm:gap-6 items-center py-3">
-                <Team team={game?.team1} />
-                
-                <div className="inline-flex flex-col items-center">
-
-                  <span>vs</span>
-                  <span>{game?.time}</span>
-                </div>
-              
-                <Team team={game?.team2} />
-              </div>
-
-              <div className="bg-green-600 text-center rounded-lg mx-2">
-                <span className="uppercase text-sm font-medium">Join Game</span>
-              </div>
-            </div>
-          ))}
-
+            {match?.games?.map((game) => (
+              <MatchCard key={nanoid()} game={game} />
+            ))}
           </div>
         </div>
       ))}
