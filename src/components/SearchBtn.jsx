@@ -6,10 +6,8 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 const SearchBtn = () => {
   const { input, searchBy } = useSearchContext();
   const navigate = useNavigate();
-  console.log(input);
-
   const onclickHandler = () => {
-    if ((input = "")) {
+    if ((input === "")) {
       return;
     }
 
