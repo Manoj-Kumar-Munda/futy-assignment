@@ -34,7 +34,7 @@ const Footer = () => {
   return (
     <motion.div
       animate={hidden ? { opacity: 0 } : { opacity: 1 }}
-      transition={{ delay: 0.7 }}
+      transition={{ delay: 0 }}
       className="fixed bottom-0 right-0 left-0 bg-dark  text-black px-2"
     >
       <div className="flex sm:hidden gap-4 items-center justify-between">
