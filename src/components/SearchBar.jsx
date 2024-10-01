@@ -3,20 +3,19 @@ import useSearchContext from "./searchContext";
 
 const SearchBar = () => {
   const { searchBy, setSearchBy, input, setInput } = useSearchContext();
-//   console.log(input);
   useEffect(() => {
     setInput("");
   }, [searchBy]);
 
   return (
-    <div className="flex gap-2 w-full bg-white px-2 rounded-xl">
+    <div className="flex gap-2  bg-white px-2 rounded-xl sm:max-w-96 w-full">
       {searchBy === "Team" ? (
         <input
           type="text"
           placeholder="Search"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="w-full border rounded-xl  bg-white py-0.5 text-black outline-none"
+          className="w-full border rounded-xl  bg-white py-0.5 text-black outline-none border-none"
         />
       ) : (
         <input

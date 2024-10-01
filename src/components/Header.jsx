@@ -78,8 +78,7 @@ const Header = () => {
             </motion.div>
           </motion.div>
         )}
-
-        <div className="flex items-center gap-2 max-w-96  w-full justify-end">
+        <div className="flex items-center gap-2 justify-end">
           {/* searchbar for >sm devices */}
           <div className="hidden  sm:inline-flex gap-2 items-center w-full text-black">
             <SearchBar />
@@ -115,7 +114,7 @@ const Header = () => {
                   : { opacity: 0, scaleX: 0 }
               }
               transition={{ delay: 0, type: "tween", duration: 0.3 }}
-              className="bg-white rounded-full overflow-hidden w-full pl-4 pr-2 flex text-black"
+              className="bg-white sm:hidden rounded-full overflow-hidden w-full pl-2 flex text-black"
             >
               <SearchBar />
             </motion.div>
@@ -127,9 +126,7 @@ const Header = () => {
                 "w-10 h-10 rounded-full hover:bg-white/10 flex justify-center items-center shrink-0"
               )}
             >
-              <button>
-                <IoSearchOutline size={20} />
-              </button>
+              <SearchBtn />
             </motion.div>
           </div>
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cn } from "../utils/cn";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const Hamburgur = ({ isSearchBarOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,9 @@ const Hamburgur = ({ isSearchBarOpen }) => {
       {!isSearchBarOpen && (
         <>
           <motion.button
-            className={cn("w-12 h-12 relative focus:outline-none rounded-full")}
+            className={cn(
+              "sm:hidden w-12 h-12 relative focus:outline-none rounded-full"
+            )}
             onClick={() => setIsOpen((prev) => !prev)}
           >
             <div

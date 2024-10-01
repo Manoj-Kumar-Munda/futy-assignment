@@ -1,14 +1,11 @@
 import React from "react";
 import Team from "./Team";
 import Currency from "./Currency";
-import { nanoid } from "nanoid";
 import { formatDateToDayAndMonth } from "../utils/helpers";
 
-const MatchCard = ({game, showDate=false}) => {
+const MatchCard = ({ game, showDate = false }) => {
   return (
-    <div
-      className="relative my-5 flex flex-col gap-2  border-t-4 rounded-lg"
-    >
+    <div className="relative my-5 flex flex-col gap-2  border-t-4 rounded-lg">
       <div className="absolute bg-white -top-3 left-1/2 -translate-x-1/2 rounded-xl">
         <div className="inline-flex gap-2 items-center px-2">
           <Currency className={"text-black border-black"} />
@@ -19,12 +16,8 @@ const MatchCard = ({game, showDate=false}) => {
         <Team team={game?.team1} />
 
         <div className="inline-flex flex-col items-center">
-          {
-            showDate && <span>{formatDateToDayAndMonth(game?.date)}</span>
+          {showDate && <span>{formatDateToDayAndMonth(game?.date)}</span>}
 
-          }
-          
-        
           <span>{game?.time}</span>
         </div>
 
