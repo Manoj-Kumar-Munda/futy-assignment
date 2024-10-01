@@ -44,4 +44,25 @@ export function findMatchesByTeam(teamName) {
   return matchesForTeam;
 }
 
-export function findMatchesByDate(date){} 
+export function findMatchesByDate(date) {
+  let result = [];
+  data?.matches?.forEach((match) => {
+    if (match?.date === date) {
+      const games = match?.games?.map((game) => {
+        return {
+          ...game,
+          date: date,
+        };
+      });
+
+      result = [...games];
+    }
+  });
+  return result;
+}
+
+export function formatDateToDayAndMonth(dateString) {
+  const date = new Date(dateString);
+  const options = { month: "short", day: "numeric" };
+  return date.toLocaleDateString("en-US", options);
+}

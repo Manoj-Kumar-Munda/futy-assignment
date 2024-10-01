@@ -2,6 +2,7 @@ import React from "react";
 import Team from "./Team";
 import Currency from "./Currency";
 import { nanoid } from "nanoid";
+import { formatDateToDayAndMonth } from "../utils/helpers";
 
 const MatchCard = ({game, showDate=false}) => {
   return (
@@ -19,7 +20,7 @@ const MatchCard = ({game, showDate=false}) => {
 
         <div className="inline-flex flex-col items-center">
           {
-            showDate && <span>Sep 28</span>
+            showDate && <span>{formatDateToDayAndMonth(game?.date)}</span>
 
           }
           
