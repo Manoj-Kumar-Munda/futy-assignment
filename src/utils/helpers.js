@@ -43,3 +43,5 @@ export function findMatchesByTeam(teamName) {
 
   return matchesForTeam;
 }
+
+export function findMatchesByDate(date){} 

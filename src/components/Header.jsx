@@ -7,17 +7,13 @@ import { cn } from "../utils/cn";
 import { FaArrowLeft } from "react-icons/fa6";
 import { nanoid } from "nanoid";
 import Currency from "./Currency";
-import "react-datepicker/dist/react-datepicker.css";
 import SearchBar from "./SearchBar";
-import { useSearchParams } from "react-router-dom";
-import useSearchContext from "./searchContext";
 import SearchBtn from "./SearchBtn";
 
 const Header = () => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState(false);
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
   let timer;
 
   const searchBtnHandler = () => {

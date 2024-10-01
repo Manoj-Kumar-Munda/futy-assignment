@@ -6,7 +6,6 @@ import { nanoid } from "nanoid";
 const MatchCard = ({game, showDate=false}) => {
   return (
     <div
-      key={nanoid()}
       className="relative my-5 flex flex-col gap-2  border-t-4 rounded-lg"
     >
       <div className="absolute bg-white -top-3 left-1/2 -translate-x-1/2 rounded-xl">
@@ -15,11 +14,16 @@ const MatchCard = ({game, showDate=false}) => {
           <span className="text-black font-bold text-sm">2100</span>
         </div>
       </div>
-      <div className="flex gap-2 sm:gap-6 items-center py-3">
+      <div className="flex justify-between gap-2 sm:gap-6 items-center py-3">
         <Team team={game?.team1} />
 
         <div className="inline-flex flex-col items-center">
-          <span>vs</span>
+          {
+            showDate && <span>Sep 28</span>
+
+          }
+          
+        
           <span>{game?.time}</span>
         </div>
 
