@@ -132,6 +132,10 @@ const Header = () => {
             How to Play?
           </span>
 
+          <span className="text-sm font-semibold hidden sm:inline-block text-nowrap rounded-xl px-1 text-white">
+            Help
+          </span>
+
           <Hamburgur isSearchBarOpen={isSearchBarOpen} />
         </div>
       </div>

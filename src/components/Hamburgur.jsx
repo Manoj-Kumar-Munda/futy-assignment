@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { cn } from "../utils/cn";
 import { motion } from "framer-motion";
+import useApp from "./context";
 
 const Hamburgur = ({ isSearchBarOpen }) => {
-  const [isOpen, setIsOpen] = useState(false);
+
+  const {showNav ,setShowNav} = useApp();
+
+  const clickHandler = () => {
+    setShowNav((prev) => !prev);
+  
+  }
   return (
     <>
       {!isSearchBarOpen && (
@@ -12,7 +19,7 @@ const Hamburgur = ({ isSearchBarOpen }) => {
             className={cn(
               "sm:hidden w-12 h-12 relative focus:outline-none rounded-full"
             )}
-            onClick={() => setIsOpen((prev) => !prev)}
+            onClick={clickHandler}
           >
             <div
               className={
@@ -22,21 +29,21 @@ const Hamburgur = ({ isSearchBarOpen }) => {
               <span
                 className={cn(
                   "block absolute h-0.5 w-7 text-white bg-current transform transition duration-500 ease-in-out",
-                  isOpen && "rotate-45",
-                  !isOpen && "-translate-y-1.5"
+                  showNav && "rotate-45",
+                  !showNav && "-translate-y-1.5"
                 )}
               ></span>
               <span
                 className={cn(
                   "block absolute  h-0.5 w-5 text-white bg-current   transform transition duration-500 ease-in-out",
-                  isOpen && "opacity-0"
+                  showNav && "opacity-0"
                 )}
               ></span>
               <span
                 className={cn(
                   "block absolute  h-0.5 w-7 text-white bg-current transform  transition duration-500 ease-in-out",
-                  isOpen && "-rotate-45",
-                  !isOpen && "translate-y-1.5"
+                  showNav && "-rotate-45",
+                  !showNav && "translate-y-1.5"
                 )}
               ></span>
             </div>
