@@ -66,3 +66,18 @@ export function formatDateToDayAndMonth(dateString) {
   const options = { month: "short", day: "numeric" };
   return date.toLocaleDateString("en-US", options);
 }
+
+export function getUpcomingMatches() {
+  const date = new Date();
+  return data?.matches?.filter((match) => new Date(match?.date) > date);
+}
+
+export function getTodaysMatches() {
+  const date = new Date()?.toISOString()?.split("T")[0];
+  return data?.matches?.filter((match) => match?.date === date);
+}
+
+export function getCompletedMatches() {
+  const date = new Date();
+  return data?.matches?.filter((match) => new Date(match?.date) <= date);
+}

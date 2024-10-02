@@ -1,24 +1,18 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import matches from "../../../data/data.json";
-import {
-  findMatchesByTeam,
-  formatDate,
-} from "../../utils/helpers";
+import { getUpcomingMatches } from "../../utils/helpers";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { nanoid } from "nanoid";
-import { useSearchParams } from "react-router-dom";
-import MatchCard from "../../components/MatchCard";
+import MatchRow from "../../components/MatchRow";
 
 const Upcoming = () => {
   const [currentElement, setCurrentElement] = useState(null);
-  const [data, setData] = useState(matches);
+  const [data, setData] = useState([]);
   const { scrollY } = useScroll();
   const [showDate, setShowDate] = useState(false);
   const elementsRef = useRef([]);
 
-
-
-
+  useEffect(() => {
+    setData(getUpcomingMatches());
+  }, []);
   const handleShowDateWithDebouncing = () => {
     let timer;
     return () => {
@@ -49,10 +43,7 @@ const Upcoming = () => {
   useMotionValueEvent(scrollY, "change", handleScroll);
 
   return (
-    <div
-      className="
-    relative max-w-screen-lg  w-full mx-auto pt-20 space-y-3"
-    >
+    <>
       <div className="z-50 fixed top-16 left-0 right-0 flex justify-center ">
         {showDate && (
           <span className="bg-red-600 text-white inline-block px-2 rounded-full py-0.5 text-sm font-bold">
@@ -60,29 +51,16 @@ const Upcoming = () => {
           </span>
         )}
       </div>
-      {data?.matches?.map((match, index) => (
+      {data?.map((match, index) => (
         <div
           ref={(el) => (elementsRef.current[index] = el)}
           className="flex flex-col gap-1 items-center"
           key={match?.date}
         >
-          <div className="relative w-full h-[1px] bg-white/10">
-            <span
-              id="date"
-              className="absolute inline-block border rounded-lg px-2 border-white/20 text-sm left-1/2 -translate-x-1/2 -top-3"
-            >
-              {formatDate(match.date)}
-            </span>
-          </div>
-
-          <div className="flex gap-2 flex-wrap justify-center">
-            {match?.games?.map((game) => (
-              <MatchCard key={nanoid()} game={game} />
-            ))}
-          </div>
+          <MatchRow match={match} />
         </div>
       ))}
-    </div>
+    </>
   );
 };
 

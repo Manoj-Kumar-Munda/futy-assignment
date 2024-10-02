@@ -17,8 +17,6 @@ const SearchResult = () => {
     }
   }, [searchParams]);
 
-  console.log(data);
-
   return (
     <div className="pt-16 px-2 sm:px-4">
       <div className="flex justify-center items-center">

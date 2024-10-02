@@ -4,6 +4,7 @@ import Live from "./pages/Home/Live";
 import Completed from "./pages/Home/Completed";
 import Upcoming from "./pages/Home/Upcoming";
 import SearchResult from "./pages/Home/SearchResult";
+import MatchesLayout from "./components/MatchesLayout";
 function App() {
   const router = createBrowserRouter([
     {
@@ -11,20 +12,26 @@ function App() {
       element: <Home />,
       children: [
         {
-          path: "live",
-          element: <Live />,
-        },
-        {
-          path: "completed",
-          element: <Completed />,
+          path: "/",
+          element: <MatchesLayout />,
+          children: [
+            {
+              path: "live",
+              element: <Live />,
+            },
+            {
+              path: "completed",
+              element: <Completed />,
+            },
+            {
+              path: "",
+              element: <Upcoming />,
+            },
+          ],
         },
         {
           path: "search",
           element: <SearchResult />,
-        },
-        {
-          path: "",
-          element: <Upcoming />,
         },
       ],
     },

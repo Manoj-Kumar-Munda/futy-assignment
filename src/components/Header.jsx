@@ -75,7 +75,7 @@ const Header = () => {
           </motion.div>
         </motion.div>
 
-        <div className="flex items-center gap-2 justify-end">
+        <div className="flex items-center gap-4 justify-end">
           {/* searchbar for >sm devices */}
           <div className="hidden  sm:inline-flex gap-2 items-center w-full text-black">
             <SearchBar />
@@ -127,6 +127,10 @@ const Header = () => {
               <SearchBtn />
             </motion.div>
           </div>
+
+          <span className="text-sm font-semibold hidden sm:inline-block text-nowrap rounded-xl border-2 px-1 text-white border-white">
+            How to Play?
+          </span>
 
           <Hamburgur isSearchBarOpen={isSearchBarOpen} />
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BiFootball } from "react-icons/bi";
+import { GrSchedule } from "react-icons/gr";
 import { FaFire } from "react-icons/fa6";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { GiCreditsCurrency } from "react-icons/gi";
@@ -44,17 +45,22 @@ const Footer = () => {
           variants={iconContainerVariants}
           className="inline-flex flex-col items-center"
         >
-          <motion.div variants={variants} className="rounded-full p-1">
-            <FaFire size={36} color="#fff" />
+          <motion.div variants={variants} className="rounded-full w-12 flex justify-center items-center h-12 p-1">
+            <GrSchedule size={28} color="#fff" />
           </motion.div>
-          <span className="text-xs font-bold text-white">Matches</span>
+          <span className="text-xs font-bold text-white">Fixtures</span>
         </motion.div>
 
-        <motion.div>
-          <div className="rounded-full p-1 ">
+        <motion.div
+          initial="default"
+          whileHover="hover"
+          variants={iconContainerVariants}
+          className="inline-flex flex-col items-center"
+        >
+          <motion.div variants={variants} className="rounded-full p-1 ">
             <GiCreditsCurrency size={36} color="#fff" />
-          </div>
-          <span className="text-xs font-bold text-white">Matches</span>
+          </motion.div>
+          <span className="text-xs font-bold text-white">Balance</span>
         </motion.div>
 
         <motion.div
