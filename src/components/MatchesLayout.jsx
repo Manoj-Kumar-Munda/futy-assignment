@@ -11,7 +11,6 @@ const matchesNav = [
 
 const MatchesLayout = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
 
   return (
     <>

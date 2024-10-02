@@ -4,7 +4,6 @@ import { cn } from "../utils/cn";
 
 const SmNavbar = () => {
   const { showNav } = useApp();
-  console.log(showNav);
 
   return (
     <div

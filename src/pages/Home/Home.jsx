@@ -9,7 +9,7 @@ import { cn } from "../../utils/cn";
 const Home = () => {
   const { pathname } = useLocation();
   const { showNav } = useApp();
-  console.log(pathname);
+
   return (
     <div className="relative">
       <Header />
