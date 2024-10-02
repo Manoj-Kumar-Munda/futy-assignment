@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import { getUpcomingMatches } from "../../utils/helpers";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import MatchRow from "../../components/MatchRow";
+import NoMatch from "../../components/NoMatch";
 
 const Upcoming = () => {
   const [currentElement, setCurrentElement] = useState(null);
@@ -51,15 +52,19 @@ const Upcoming = () => {
           </span>
         )}
       </div>
-      {data?.map((match, index) => (
-        <div
-          ref={(el) => (elementsRef.current[index] = el)}
-          className="flex flex-col gap-1 items-center"
-          key={match?.date}
-        >
-          <MatchRow match={match} />
-        </div>
-      ))}
+      {data?.length === 0 ? (
+        <NoMatch />
+      ) : (
+        data?.map((match, index) => (
+          <div
+            ref={(el) => (elementsRef.current[index] = el)}
+            className="flex flex-col gap-1 items-center"
+            key={match?.date}
+          >
+            <MatchRow match={match} />
+          </div>
+        ))
+      )}
     </>
   );
 };

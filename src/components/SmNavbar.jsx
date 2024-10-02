@@ -8,7 +8,7 @@ const SmNavbar = () => {
   return (
     <div
       className={cn(
-        " sm:hidden absolute top-14 left-2 right-2 rounded-xl overflow-hidden bg-white/40 backdrop-blur-xl text-gray-900 z-50 max-h-0 transition-all duration-300",
+        " sm:hidden fixed top-14 left-2 right-2 rounded-xl overflow-hidden bg-white/40 backdrop-blur-xl text-gray-900 z-50 max-h-0 transition-all duration-300",
         showNav && "max-h-96"
       )}
     >

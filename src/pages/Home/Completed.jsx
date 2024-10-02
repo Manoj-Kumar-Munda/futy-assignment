@@ -2,6 +2,7 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { getCompletedMatches, getUpcomingMatches } from "../../utils/helpers";
 import MatchRow from "../../components/MatchRow";
+import NoMatch from "../../components/NoMatch";
 
 const Completed = () => {
   const [currentElement, setCurrentElement] = useState(null);
@@ -51,15 +52,19 @@ const Completed = () => {
           </span>
         )}
       </div>
-      {data?.map((match, index) => (
-        <div
-          ref={(el) => (elementsRef.current[index] = el)}
-          className="flex flex-col gap-1 items-center"
-          key={match?.date}
-        >
-          <MatchRow match={match} />
-        </div>
-      ))}
+      {data?.length === 0 ? (
+        <NoMatch />
+      ) : (
+        data?.map((match, index) => (
+          <div
+            ref={(el) => (elementsRef.current[index] = el)}
+            className="flex flex-col gap-1 items-center"
+            key={match?.date}
+          >
+            <MatchRow match={match} />
+          </div>
+        ))
+      )}
     </>
   );
 };

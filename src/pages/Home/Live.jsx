@@ -1,9 +1,8 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import {
-  getTodaysMatches
-} from "../../utils/helpers";
+import { getTodaysMatches } from "../../utils/helpers";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import MatchRow from "../../components/MatchRow";
+import NoMatch from "../../components/NoMatch";
 
 const Live = () => {
   const [currentElement, setCurrentElement] = useState(null);
@@ -53,9 +52,7 @@ const Live = () => {
         )}
       </div>
       {data?.length === 0 ? (
-        <div className="my-4 min-h-40 grid place-content-center ">
-          <span className="">No matches today</span>
-        </div>
+        <NoMatch />
       ) : (
         data?.map((match, index) => (
           <div
