@@ -54,9 +54,7 @@ const Header = () => {
             isSearchBarOpen && "hidden"
           )}
         >
-          <motion.div
-            className="bg-white rounded-full w-10 h-10 p-1.5"
-          >
+          <motion.div className="bg-white rounded-full w-10 h-10 p-1.5">
             <img
               src={Profile}
               alt="profile"
@@ -77,10 +75,13 @@ const Header = () => {
 
         <div className="flex items-center gap-4 justify-end">
           {/* searchbar for >sm devices */}
-          <div className="hidden  sm:inline-flex gap-2 items-center w-full text-black">
+          <motion.div
+            animate={hidden ? { opacity: 0 } : { opacity: 1 }}
+            className="hidden  sm:inline-flex gap-2 items-center w-full text-black"
+          >
             <SearchBar />
             <SearchBtn />
-          </div>
+          </motion.div>
 
           {/* searchbar for <=sm device */}
           <div
@@ -117,7 +118,6 @@ const Header = () => {
             </motion.div>
 
             <motion.div
-            
               animate={hidden ? { opacity: 0 } : { opacity: 1 }}
               onClick={searchBtnHandler}
               className={cn(
@@ -128,13 +128,18 @@ const Header = () => {
             </motion.div>
           </div>
 
-          <span className="text-sm font-semibold hidden sm:inline-block text-nowrap rounded-xl border-2 px-1 text-white border-white">
-            How to Play?
-          </span>
+          <motion.div
+            animate={hidden ? { opacity: 0 } : { opacity: 1 }}
+            className="flex gap-3 items-center"
+          >
+            <span className="text-sm font-semibold hidden sm:inline-block text-nowrap rounded-xl border-2 px-1 text-white border-white">
+              How to Play?
+            </span>
 
-          <span className="text-sm font-semibold hidden sm:inline-block text-nowrap rounded-xl px-1 text-white">
-            Help
-          </span>
+            <span className="text-sm font-semibold hidden sm:inline-block text-nowrap rounded-xl px-1 text-white">
+              Help
+            </span>
+          </motion.div>
 
           <Hamburgur isSearchBarOpen={isSearchBarOpen} />
         </div>
