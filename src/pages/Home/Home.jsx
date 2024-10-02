@@ -18,8 +18,8 @@ const Home = () => {
       <div className="max-w-screen-xl mx-auto">
         <div
           className={cn(
-            " sm:hidden fixed inset-0 bg-transparent transition-all duration-300 w-96 h-96   z-10  rounded-full top-0 left-0",
-            showNav && "bg-black/40 scale-[320%]"
+            " sm:hidden fixed inset-0 bg-transparent transition-all duration-300 w-96 h-96 max-w-0  z-10  rounded-full top-0 left-0",
+            showNav && "bg-black/40 scale-[320%] max-w-[9999px]"
           )}
         ></div>
         <Outlet />
